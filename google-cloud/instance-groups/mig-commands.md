@@ -45,9 +45,26 @@ Possible policies to update:
 
 - `Resize the group`
   - gcloud compute instance-groups managed `resize` **--size=5**
+- `Recreate one or more instances (delete and recreate)`
+  - gcloud compute instance-groups managed `recreate-instances` my-mig **--instances=**my-instance-1, my-instance-2
 - `Update specific instances:`
   - gcloud compute instance-groups managed `update-instances` my-mig **--instances=**my-instance-3,my-instance-4 (Updating specific instances from the group)
     - **--minimal-action**=`none` (default)/`refresh`/`replace`/`restart`
     - **--most-disruptive-allowed-action**=`none` (default)/`refresh`/`replace`/`restart`
 - `Update instance template:`
   - gcloud compute instance-groups managed `set-instance-template` my-mig **--template=**v2-template
+
+## Rolling actions
+
+We want to manage new release without downtime:
+gcloud compute instance-groups managed `rolling-action`
+
+- **Restart (stop & start)**: gcloud compute instance-groups managed **rolling-action** `restart` my-mig
+  - **--max-surge=**5 or 10% (Max number of instances updated at a time)
+- **Replace (delete & recreate)**: gcloud compute instance-groups managed **rolling-action** `replace` my-mig
+  - **--max-surge=**5 or 10%
+  - **--max-unavailable=**5 or 10% (Max number of instances that can be down for the update)
+  - **--replacement-method=**`recreate`/`substitute` (substitute is default and creates instances with new names, while recreate reuses names)
+- **Updates instances** to a new template:
+  - **Basic version** - slowly step by step: gcloud compute instance-groups managed **rolling-action** `start-update` my-mig **--version=template=**v1-template
+  - **Canary version** - update a subset of instances: gcloud compute instance-groups managed **rolling-action** `start-update` my-mig **--version=template=v1-template** **--canary-version=**template=v2-template,target-size=10%
