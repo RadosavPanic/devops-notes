@@ -32,3 +32,11 @@ We can also add:
 - **--cool-down-period** (default `60s`)
 - `Scaling triggers`: **--scale-based-on-cpu** **--target-cpu-utilization** **--scale-based-on-load-balancing** **--target-load-balancing-utilization**
 - **--min-num-replicas** **--mode** (`off`/`on` - default/`only-scale-out`)
+
+### Update existing MIG Policies
+
+gcloud compute instance-groups managed `update` my-mig
+Possible policies to update:
+
+- **--initial-delay**
+- **--health-check**
