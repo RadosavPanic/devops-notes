@@ -40,3 +40,14 @@ Possible policies to update:
 
 - **--initial-delay**
 - **--health-check**
+
+## Making updates
+
+- `Resize the group`
+  - gcloud compute instance-groups managed `resize` **--size=5**
+- `Update specific instances:`
+  - gcloud compute instance-groups managed `update-instances` my-mig **--instances=**my-instance-3,my-instance-4 (Updating specific instances from the group)
+    - **--minimal-action**=`none` (default)/`refresh`/`replace`/`restart`
+    - **--most-disruptive-allowed-action**=`none` (default)/`refresh`/`replace`/`restart`
+- `Update instance template:`
+  - gcloud compute instance-groups managed `set-instance-template` my-mig **--template=**v2-template
