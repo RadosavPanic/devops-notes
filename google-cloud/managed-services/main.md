@@ -72,3 +72,26 @@ Typical features:
 - **Load Balancer**: Distribute load among multiple instances of a microservice
 - **Self Healing**: Do health checks and replace failing instances
 - **Zero Downtime Deployments**: Release new versions without downtime
+
+## Serverless
+
+With serverless, we don't have to worry about infrastructure (zero visibility into infrastructure). Provider provides flexible scaling and automated high availability.
+
+We focus on the code and cloud managed services takes care of everything needed to scale our code to serve millions of requests. Also we pay only for what we use - `zero requests = zero cost`.
+
+> [!IMPORTANT]
+> **Important features**
+>
+> 1. Zero worry about infrastructure, scaling and availability
+> 2. Zero invocations => zero cost
+> 3. Pay for invocations and not for instances (or nodes or servers)
+>
+> Serverless **Level 1**: Features (1 + 2)
+>
+> Serverless **Level 2**: Features (1 + 2 + 3)
+
+**Level 1**: `Google App Engine` - App Engine is fully managed, serverless platform
+
+- Scale down to `ZERO` instances when there is no load, `BUT we pay` for number (and type) of instances running!
+
+**Level 2**: `Google Functions` - Single purpose functions, reacting to events
