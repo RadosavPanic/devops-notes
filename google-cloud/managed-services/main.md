@@ -49,3 +49,26 @@ Varieties:
 - CAAS (Container as a Service): Containers instead of Apps
 - FAAS (Function as a Service): Functions instead of Apps
 - Databases - Relational & NoSQL (Amazon RDS, Google Cloud SQL, Azure SQL Database), Queues, AI, ML, Operations etc.
+
+## CAAS (Container as a Service)
+
+CAAS allows for **creating Docker images** for each microservice. Docker image has all needs of a microservice: Application runtime and application code and dependencies.
+
+Containers run the same way on any infrastructure: local machine, corporate data center and cloud.
+
+Advantages:
+
+- Docker containers are light weight
+  - Compared to Virtual Machines as they do not have a Guest OS
+- Containers are isolated
+- Docker is cloud neutral
+
+### Container Orchestration
+
+Typical features:
+
+- **Auto Scaling**: Scale containers based on demand
+- **Service Discovery**: Help microservices find one another
+- **Load Balancer**: Distribute load among multiple instances of a microservice
+- **Self Healing**: Do health checks and replace failing instances
+- **Zero Downtime Deployments**: Release new versions without downtime
