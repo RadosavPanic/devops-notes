@@ -31,3 +31,16 @@ It can connect to variety of Google Cloud storage products (Cloud SQL etc).
   - Serverless
   - Less responsibility
   - Lower flexibility
+
+## App Engine - Standard vs Flexible Comparison
+
+| Feature               | Standard                                           | Flexible                            |
+| --------------------- | -------------------------------------------------- | ----------------------------------- |
+| Pricing Factors       | Instance hours                                     | vCPU, Memory & Persistent Disks     |
+| Scaling               | Manual, Basic, Automatic                           | Manual, Automatic                   |
+| Scaling to Zero       | Yes                                                | No. Minimum one instance            |
+| Instance startup time | Seconds                                            | Minutes                             |
+| Rapid Scaling         | Yes                                                | No                                  |
+| Max. request timeout  | 1 to 10 minutes                                    | 60 minutes                          |
+| Local disk            | Mostly (except for Python, PHP). Can write to /tmp | Yes. Ephemeral. New Disk on startup |
+| SSH for debugging     | No                                                 | Yes                                 |
