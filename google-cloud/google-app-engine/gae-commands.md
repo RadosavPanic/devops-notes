@@ -15,6 +15,10 @@ SERVICE: default
 NUM_VERSIONS: 1
 ```
 
+### Splitting traffic
+
+Splitting traffic can be done by 3 criterias: **IP Address**, **Cookie** and **Random**.
+
 - `gcloud app services set-traffic --splits=v3=.5,v2=.5`: Splits traffic to the specified versions with percentage defined. Etc. v3 => .5 = 50% and v2 => .5 = 50%. Uses default **splitting traffic by IP**.
 - `gcloud app services set-traffic --splits=v3=.5,v2=.5 --split-by=random`: Changes splitting criteria from `based on IP` to `random`. Based on IP can cause traffic to remain on the same version, while random distributes traffic randomly instead of IP based.
 - `gcloud app services set-traffic --splits=v3=1`: Changes all trafic to be 100% on v3
@@ -61,6 +65,7 @@ DEBUG_MODE:
 
 - `gcloud app browse`: Provides URL of active version
 - `gcloud app browse --version=version-id`: Provides URL to specified version
+- `gcloud app browse --service=service-name`: Provides URL of active version in specified service
 
 ## Sending requests
 
