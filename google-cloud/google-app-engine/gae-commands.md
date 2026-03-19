@@ -15,6 +15,25 @@ SERVICE: default
 NUM_VERSIONS: 1
 ```
 
+- `gcloud app services browse serviceName --version=v3`
+
+```
+SERVICE: default
+URL: https://v3-dot-PROJECT-ID.uc.r.appspot.com
+```
+
+- `gcloud app services describe serviceName`
+
+```
+id: default
+name: apps/PROJECT-ID/services/default
+split:
+  allocations:
+    v3: 1.0
+```
+
+- `gcloud app services delete serviceName`
+
 ### Splitting traffic
 
 Splitting traffic can be done by 3 criterias: **IP Address**, **Cookie** and **Random**.
@@ -26,14 +45,7 @@ Splitting traffic can be done by 3 criterias: **IP Address**, **Cookie** and **R
 ## Versions
 
 - `gcloud app versions list`
-
-```
-SERVICE: default
-VERSION.ID: version-id-here
-TRAFFIC_SPLIT: 1.00
-LAST_DEPLOYED: 2026-03-18T08:14:30+00:00
-SERVING_STATUS: SERVING
-```
+- `gcloud app versions list --hide-no-traffic`: Only show versions that are receiving traffic
 
 ```
 SERVICE: default
@@ -48,6 +60,13 @@ TRAFFIC_SPLIT: 1.00
 LAST_DEPLOYED: 2026-03-18T11:17:40+00:00
 SERVING_STATUS: SERVING
 ```
+
+- `gcloud app versions browse v3 --service=serviceName`
+- `gcloud app versions delete v3 --service=serviceName`
+- `gcloud app versions describe v3 --service=serviceName`
+- `gcloud app versions migrate v3 --service=serviceName`: Migrates all traffic to new version
+- `gcloud app versions start serviceName`
+- `gcloud app versions stop serviceName`
 
 ## Instances
 
