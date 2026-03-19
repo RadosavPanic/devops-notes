@@ -55,11 +55,35 @@ SERVING_STATUS: SERVING
 
 ```
 SERVICE: default
-VERSION: version-id-here
-ID: unique ID
+VERSION: v3
+ID: instance-id
 VM_STATUS: N/A
+VM_LIVENESS:
 DEBUG_MODE:
 ```
+
+- `gcloud app instances describe instanceID --service=default --version=v3`
+
+```
+appEngineRelease: 1.9.71
+availability: DYNAMIC
+averageLatency: 3
+id: instance-id
+memoryUsage: '153452544'
+name: apps/PROJECT-ID/services/default/versions/v3/instances/instance-id
+qps: 0.466667
+requests: 54
+startTime: '2026-03-19T10:51:20.054570Z'
+```
+
+- `gcloud app instances scp`: Copy files securely from local machine into a directory which is present on the instance
+  - gcloud app instances `scp` --service=my-service --version=v3 --recurse `local_dir` **instanceID:**`remote_dir`
+  - Available only for App Engine Flexible instances
+- `gcloud app instances ssh`: SSH into the VM of the App Engine instance
+  - gcloud app instances `ssh` --service=my-service --version=v3 **instanceID**
+  - Available only for App Engine Flexible instances
+- `gcloud app instances delete`: Deletes an instance. Instance must not be an active with receiving traffic to be deleted.
+  - gcloud app instance delete **instanceID** --service=my-service --version=v3
 
 ## Browsing versions
 
