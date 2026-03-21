@@ -11,7 +11,10 @@
 **Deploy Microservice to Kubernetes**:
 
 - **kubectl create deployment** nameOfDeployment `--image`=in28min/hello-world-rest-api:0.0.1.RELEASE
-- **kubectl get deployment**
+
+**Get deployments info**
+
+- kubectl get deployment
 
 **Exponse deployment**:
 
@@ -26,3 +29,15 @@ When deployment is exposed, a Kubernetes service is getting created.
 **Look at specific events**:
 
 - kubectl get events
+
+**Increase number of instances of microservice**:
+
+- kubectl **scale deployment** nameOfDeployment --replicas=3
+
+**Get pods info**:
+
+- kubectl get pods
+
+**Increase number of nodes in K8s cluster**:
+
+- gcloud container clusters resize my-cluster --node-pool my-node-pool --num-nodes=5 --zone=us-central1-c
