@@ -80,3 +80,22 @@ We can add etc. password configuration for microservice using **K8s Secrets**.
 ## Applying YAML config for K8s
 
 - kubectl apply -f deployment.yaml
+
+## Deploying new microservice - attaching new node pool with GPU instances to the cluster
+
+- gcloud config set container/cluster VALUE
+- gcloud container node-pools create `POOL_NAME` --cluster=CLUSTER_NAME
+- gcloud container node-pools list --zone=us-central1-c --cluster=CLUSTER_NAME
+
+### Setting node pool nodeSelector
+
+To be able to deploy new microservice to the new pool and not old one, we can set **nodeSelector** in `deployment.yaml`.
+
+- nodeSelector: cloud.google.com/gke-nodepool: POOL_NAME
+
+## Delete the Microservices
+
+- **Delete service**: kubectl delete service
+- **Delete deployment**: kubectl delete deployment
+
+**Also we can delete cluster**: gcloud container clusters delete
