@@ -76,3 +76,7 @@ We can add etc. password configuration for microservice using **K8s Secrets**.
 - kubectl create secret generic nameOfApp-secrets-1 --from-literal=RDS_PASSWORD=db_todo
 - kubectl get secret
 - kubectl describe secret nameOfApp-secrets-1
+
+## Applying YAML config for K8s
+
+- kubectl apply -f deployment.yaml
