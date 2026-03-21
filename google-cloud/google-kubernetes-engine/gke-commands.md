@@ -41,3 +41,38 @@ When deployment is exposed, a Kubernetes service is getting created.
 **Increase number of nodes in K8s cluster**:
 
 - gcloud container clusters resize my-cluster --node-pool my-node-pool --num-nodes=5 --zone=us-central1-c
+
+## Auto Scaling
+
+### Autoscaling Pods for Microservice
+
+Microservices can only scale up to the level there are nodes in K8s Cluster. Beyond the level, we may not have sufficient nodes and then we have to increase the number of nodes in K8s Cluster.
+
+- kubectl autoscale deployment nameofDeployment --max=4 --cpu-percent=70
+
+With autoscale command, internally created inside Kubernetes is **HPA** - `Horizontal Pod Autoscaling configuration`.
+
+- kubectl get hpa
+
+### Autoscaling setup for K8s Cluster
+
+- gcloud container clusters update `cluster-name` --enable-autoscaling --min-nodes=1 --max-nodes=10
+
+## Config Map and Secrets
+
+### Config Map
+
+We can add some application configuration for microservice using **Config Map**.
+
+- kubectl create configmap name-of-config --from-literal=RDS_DB_NAME=dbname
+- kubectl get configmap
+- kubectl get configmap name-of-config
+- kubectl describe configmap name-of-config
+
+### Secrets
+
+We can add etc. password configuration for microservice using **K8s Secrets**.
+
+- kubectl create secret generic nameOfApp-secrets-1 --from-literal=RDS_PASSWORD=db_todo
+- kubectl get secret
+- kubectl describe secret nameOfApp-secrets-1
