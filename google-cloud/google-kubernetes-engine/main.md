@@ -12,3 +12,35 @@
   - Cloud Logging **System** (K8s logs) and **Application Logs** (Deployment/Port logs) can be exported to **Big Query** or **Pub/Sub**
     - Big Query is relational big data database in GCP. It's serverless and it's used for large dataset querying, good for validation/reporting.
     - Pub/Sub is kind of queue where you we actually stream your logs to
+
+## Scenarios - 1
+
+`Scenario 1:` You want to keep our costs low and optimize your GKE implementation
+
+**Solution 1:**
+
+- Consider Preemptible VMs, Appropriate region, Committed-use discounts
+- E2 machine types are cheaper than N1
+- Choose right environment to fit our workload type (Use multiple node pools if needed)
+
+`Scenario 2:` You want an efficient, completely auto scaling GKE soluton
+
+**Solution 2:** Configure Horizontal Pod Autoscaler for deployments and Cluster Autoscaler for node pools
+
+`Scenario 3`: You want to execute untrusted third-party code in Kubernetes Cluster
+
+**Solution 3**: Create a new node pool with GKE Sandbox. Deploy untrusted code to Sandbox node pool. Any different kind of workload this way won't impact other workloads in the Cluster.
+
+## Scenarios - 2
+
+`Scenario 4`: You want enable ONLY internal communication between your microservice deployments in a Kubernetes Cluster
+
+**Solution 4**: Create Service of type ClusterIP
+
+`Scenario 5`: My pod stays pending
+
+**Solution 5**: Most probably Pod cannot be scheduled onto a node (insufficient resources). Etc. increase the number of nodes in your node pool to have sufficient resources.
+
+`Scenario 6`: My pod stays waiting
+
+**Solution 6**: Most probably failure to pull the image (etc. path of container image is not correct or you don't have enough access to pull the image from the container repository)
