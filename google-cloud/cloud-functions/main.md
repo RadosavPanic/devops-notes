@@ -20,3 +20,11 @@ There are 2 product versions:
 
 - Cloud Functions (1st gen): First version
 - Cloud Functions (2nd gen): New version built on top of Cloud Run and Eventarc
+
+## Anthos
+
+**Anthos** enables us to run Kubernetes clusters anywhere.
+
+- Cloud, Multi-Cloud and On-Premise
+
+**Cloud run for Anthos**: Enables us to deploy our workloads to Anthos clusters running on-premises or on Google Cloud
