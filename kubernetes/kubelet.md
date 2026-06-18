@@ -1,6 +1,6 @@
 ## Kubelet
 
-**`Kubelet**` loads/unloads containers on worker nodes as instructed by the scheduler on the master.
+**`Kubelet`** loads/unloads containers on worker nodes as instructed by the scheduler on the master.
 
 Kubelet in the Worker node registers the node with K8s Cluster.
 When it receives the instructions to load a container or a pod on the node, it requests the container runtime engine to pull the required image and run an instance.
